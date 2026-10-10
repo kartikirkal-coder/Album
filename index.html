@@ -74,7 +74,7 @@
     margin-top: 4px;
   }
 
-  /* Discreet Stealth Admin Button */
+  /* Discreet Admin Button */
   .admin-trigger-btn {
     position: absolute;
     right: 0;
@@ -185,7 +185,6 @@
     background: #2b2e38;
   }
 
-  /* Presentation Visual Card */
   .preview-card {
     border: 1.5px solid var(--border-gold);
     border-radius: 12px;
@@ -258,7 +257,6 @@
     white-space: nowrap;
   }
 
-  /* Flush Mount Toggle Pill */
   .checkbox-pill {
     display: flex;
     align-items: center;
@@ -276,7 +274,6 @@
   }
   .checkbox-pill input { display: none; }
 
-  /* Pricing Output Banner */
   .quote-banner {
     background: linear-gradient(145deg, #1f2127 0%, #15161a 100%);
     border: 1.5px solid var(--border-gold);
@@ -334,7 +331,6 @@
     justify-content: space-between;
   }
 
-  /* Actions */
   .btn {
     width: 100%;
     padding: 14px;
@@ -356,7 +352,6 @@
     box-shadow: 0 6px 20px -4px rgba(37, 211, 102, 0.4);
   }
 
-  /* Modals */
   .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -416,7 +411,6 @@
     margin-bottom: 10px;
   }
 
-  /* Image Editor List Inside Admin */
   .admin-img-item {
     display: flex;
     gap: 12px;
@@ -493,7 +487,6 @@
     border: 1px solid #572023;
   }
 
-  /* Full Image Zoom Modal */
   #zoomModal .modal-card {
     max-width: 900px;
     padding: 8px;
@@ -657,33 +650,33 @@
       <div class="grid-4">
         <div class="form-group">
           <label>Sheets Multiplier</label>
-          <input type="number" step="0.1" id="admMultSheets" onchange="saveAdminSettings()">
+          <input type="number" step="0.1" id="admMultSheets">
         </div>
         <div class="form-group">
           <label>Cover Pad Multiplier</label>
-          <input type="number" step="0.1" id="admMultPad" onchange="saveAdminSettings()">
+          <input type="number" step="0.1" id="admMultPad">
         </div>
         <div class="form-group">
           <label>Combos Multiplier</label>
-          <input type="number" step="0.1" id="admMultCombos" onchange="saveAdminSettings()">
+          <input type="number" step="0.1" id="admMultCombos">
         </div>
         <div class="form-group">
           <label>Flush Mount Multiplier</label>
-          <input type="number" step="0.1" id="admMultFlush" onchange="saveAdminSettings()">
+          <input type="number" step="0.1" id="admMultFlush">
         </div>
       </div>
       <div class="grid-3" style="margin-top: 10px;">
         <div class="form-group">
           <label>Flush Mount Base Cost (₹)</label>
-          <input type="number" id="admFlushBaseCost" onchange="saveAdminSettings()">
+          <input type="number" id="admFlushBaseCost">
         </div>
         <div class="form-group">
           <label>Design Rate / Sheet (₹)</label>
-          <input type="number" id="admDesignRate" onchange="saveAdminSettings()">
+          <input type="number" id="admDesignRate">
         </div>
         <div class="form-group">
           <label>Admin Password</label>
-          <input type="password" id="admNewPin" onchange="saveAdminSettings()">
+          <input type="password" id="admNewPin">
         </div>
       </div>
     </div>
@@ -899,401 +892,4 @@ const DEFAULT_CONFIG = {
       name: "3-in-1 Luxury Combo Set", 
       desc: "Custom rexine box + acrylic designer cover + rexine bag",
       baseCost: 2400,
-      image: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1000&q=80"
-    },
-    { 
-      id: "combo_uv", 
-      category: "combo", 
-      name: "UV Printed Acrylic Box Combo", 
-      desc: "Floral UV acrylic window box + acrylic cover + bag",
-      baseCost: 2900,
-      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1000&q=80"
-    },
-    { 
-      id: "combo_5in1", 
-      category: "combo", 
-      name: "5-in-1 Showcase Presentation Combo", 
-      desc: "Rexine box + acrylic cover + mini book + calendar + USB case",
-      baseCost: 3400,
-      image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1000&q=80"
-    },
-    { 
-      id: "combo_royal_5in1", 
-      category: "combo", 
-      name: "5-in-1 Royal Acrylic Suite", 
-      desc: "Dual tone luxury box + 2 covers + mini book + calendar + USB case",
-      baseCost: 5500,
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1000&q=80"
-    }
-  ]
-};
-
-// State init
-let config = JSON.parse(localStorage.getItem('cbvisuals_album_config_v1')) || JSON.parse(JSON.stringify(DEFAULT_CONFIG));
-
-function saveConfig() {
-  localStorage.setItem('cbvisuals_album_config_v1', JSON.stringify(config));
-}
-
-function initApp() {
-  populateEngineDropdown();
-  populatePaperOptions();
-  populateCoverDropdown();
-  updateCoverVisual();
-  calculateQuote();
-}
-
-function populateEngineDropdown() {
-  const engineSelect = document.getElementById("engineSelect");
-  const curVal = engineSelect.value;
-  engineSelect.innerHTML = "";
-  
-  const engines = [];
-  config.papers.forEach(p => {
-    if (!engines.find(e => e.id === p.engineId)) {
-      engines.push({ id: p.engineId, name: p.engineName });
-    }
-  });
-
-  engines.forEach(e => {
-    const opt = document.createElement("option");
-    opt.value = e.id;
-    opt.textContent = e.name;
-    engineSelect.appendChild(opt);
-  });
-  if (curVal && engines.some(e => e.id === curVal)) {
-    engineSelect.value = curVal;
-  }
-}
-
-function populatePaperOptions() {
-  const engineId = document.getElementById("engineSelect").value;
-  const paperSelect = document.getElementById("paperSelect");
-  const curVal = paperSelect.value;
-  paperSelect.innerHTML = "";
-
-  const availablePapers = config.papers.filter(p => p.engineId === engineId);
-  availablePapers.forEach(p => {
-    const opt = document.createElement("option");
-    opt.value = p.id;
-    const unitRate = Math.round((p.baseCost + config.designCostPerSheet) * config.multipliers.sheet);
-    opt.textContent = `${p.name} (₹${unitRate} / sheet)`;
-    paperSelect.appendChild(opt);
-  });
-
-  if (curVal && availablePapers.some(p => p.id === curVal)) {
-    paperSelect.value = curVal;
-  }
-}
-
-function populateCoverDropdown() {
-  const coverSelect = document.getElementById("coverType");
-  const curVal = coverSelect.value;
-  coverSelect.innerHTML = "";
-
-  const padGroup = document.createElement("optgroup");
-  padGroup.label = "Cover Pads & Briefcases";
-
-  const comboGroup = document.createElement("optgroup");
-  comboGroup.label = "Luxury Presentation Combos";
-
-  config.covers.forEach(c => {
-    const opt = document.createElement("option");
-    opt.value = c.id;
-
-    if (c.category === "none") {
-      opt.textContent = c.name;
-      coverSelect.appendChild(opt);
-      return;
-    }
-
-    const mult = c.category === "combo" ? config.multipliers.combo : config.multipliers.pad;
-    const clientPrice = Math.round(c.baseCost * mult);
-    opt.textContent = `${c.name} (+₹${clientPrice.toLocaleString('en-IN')})`;
-
-    if (c.category === "combo") comboGroup.appendChild(opt);
-    else padGroup.appendChild(opt);
-  });
-
-  coverSelect.appendChild(padGroup);
-  coverSelect.appendChild(comboGroup);
-  if (curVal) coverSelect.value = curVal;
-}
-
-function updateCoverVisual() {
-  const coverId = document.getElementById("coverType").value;
-  const cover = config.covers.find(c => c.id === coverId) || config.covers[0];
-
-  const mult = cover.category === "combo" ? config.multipliers.combo : config.multipliers.pad;
-  const price = cover.category === "none" ? 0 : Math.round(cover.baseCost * mult);
-
-  document.getElementById("coverPreviewImg").src = cover.image;
-  document.getElementById("coverPreviewName").textContent = cover.name;
-  document.getElementById("coverPreviewDesc").textContent = cover.desc;
-  document.getElementById("coverPreviewPrice").textContent = price > 0 ? `+₹${price.toLocaleString('en-IN')}` : "Included";
-}
-
-function zoomCurrentImage() {
-  const src = document.getElementById("coverPreviewImg").src;
-  document.getElementById("modalEnlargedImg").src = src;
-  document.getElementById("zoomModal").classList.add("active");
-}
-
-function closeZoomModal() {
-  document.getElementById("zoomModal").classList.remove("active");
-}
-
-function adjustSheets(delta) {
-  const input = document.getElementById("sheetCount");
-  let val = parseInt(input.value, 10) || 30;
-  val = Math.max(10, Math.min(100, val + delta));
-  input.value = val;
-  calculateQuote();
-}
-
-function toggleFlushMount() {
-  const cb = document.getElementById("flushMountCheck");
-  cb.checked = !cb.checked;
-  document.getElementById("flushMountPill").classList.toggle("active", cb.checked);
-  calculateQuote();
-}
-
-function calculateQuote() {
-  const paperId = document.getElementById("paperSelect").value;
-  const paper = config.papers.find(p => p.id === paperId) || config.papers[0];
-  const sheets = parseInt(document.getElementById("sheetCount").value, 10) || 30;
-
-  const coverId = document.getElementById("coverType").value;
-  const cover = config.covers.find(c => c.id === coverId) || config.covers[0];
-
-  const flushMountChecked = document.getElementById("flushMountCheck").checked;
-  document.getElementById("flushMountPill").classList.toggle("active", flushMountChecked);
-
-  // 1. Sheets calculation
-  const sheetBaseRate = paper.baseCost + config.designCostPerSheet;
-  const customerSheetUnitRate = Math.round(sheetBaseRate * config.multipliers.sheet);
-  const totalSheetsPrice = customerSheetUnitRate * sheets;
-
-  // 2. Cover / Combo calculation
-  let totalCoverPrice = 0;
-  if (cover.category === "combo") {
-    totalCoverPrice = Math.round(cover.baseCost * config.multipliers.combo);
-  } else if (cover.category === "pad") {
-    totalCoverPrice = Math.round(cover.baseCost * config.multipliers.pad);
-  }
-
-  // 3. Flush Mount
-  const flushMountCustomerRate = Math.round(config.flushMountBaseCost * config.multipliers.flushMount);
-  document.getElementById("flushMountPriceTag").textContent = `+₹${flushMountCustomerRate.toLocaleString('en-IN')}`;
-  const totalBindingPrice = flushMountChecked ? flushMountCustomerRate : 0;
-
-  // Total
-  const finalTotal = totalSheetsPrice + totalCoverPrice + totalBindingPrice;
-
-  // UI updates
-  document.getElementById("displayTotal").textContent = `₹${finalTotal.toLocaleString('en-IN')}`;
-  document.getElementById("displayPerSheet").textContent = `₹${customerSheetUnitRate} / sheet`;
-
-  // Mentions sheets simply
-  document.getElementById("summarySheetsTitle").textContent = `${sheets} Sheets`;
-  document.getElementById("summarySheetsPrice").textContent = `₹${totalSheetsPrice.toLocaleString('en-IN')}`;
-
-  document.getElementById("summaryCoverTitle").textContent = cover.name;
-  document.getElementById("summaryCoverPrice").textContent = `₹${totalCoverPrice.toLocaleString('en-IN')}`;
-
-  const bindingRow = document.getElementById("summaryBindingRow");
-  if (flushMountChecked) {
-    bindingRow.style.display = "flex";
-    document.getElementById("summaryBindingPrice").textContent = `₹${totalBindingPrice.toLocaleString('en-IN')}`;
-  } else {
-    bindingRow.style.display = "none";
-  }
-}
-
-// WhatsApp Share
-function shareOnWhatsApp() {
-  const paperId = document.getElementById("paperSelect").value;
-  const paper = config.papers.find(p => p.id === paperId);
-  const sheets = document.getElementById("sheetCount").value;
-  const coverId = document.getElementById("coverType").value;
-  const cover = config.covers.find(c => c.id === coverId);
-  const flushMountChecked = document.getElementById("flushMountCheck").checked;
-  const total = document.getElementById("displayTotal").textContent;
-  const perSheet = document.getElementById("displayPerSheet").textContent;
-
-  let msg = `*📸 CB VISUALS PHOTOGRAPHY*\n`;
-  msg += `_Album Collections Quotation_\n`;
-  msg += `------------------------------------\n`;
-  msg += `• *Paper & Finish:* ${paper.name}\n`;
-  msg += `• *Sheets:* ${sheets} Sheets\n`;
-  msg += `• *Per Sheet Rate:* ${perSheet}\n`;
-  msg += `• *Cover / Presentation:* ${cover.name}\n`;
-  if (flushMountChecked) msg += `• *Binding:* Seamless Flush Mount Rigid Included\n`;
-  msg += `------------------------------------\n`;
-  msg += `*ESTIMATED TOTAL:* ${total}\n`;
-  msg += `*(Includes Custom Layout Design, Printing & Presentation)*`;
-
-  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-// PIN & Admin Handlers
-function openPinModal() {
-  document.getElementById("pinModal").classList.add("active");
-  document.getElementById("adminPin").value = "";
-  document.getElementById("adminPin").focus();
-}
-
-function closePinModal() {
-  document.getElementById("pinModal").classList.remove("active");
-}
-
-function verifyPin() {
-  const entered = document.getElementById("adminPin").value;
-  if (entered === config.adminPin) {
-    closePinModal();
-    openAdminModal();
-  } else {
-    alert("Incorrect password. Please verify your credentials.");
-    document.getElementById("adminPin").value = "";
-  }
-}
-
-function openAdminModal() {
-  document.getElementById("admMultSheets").value = config.multipliers.sheet;
-  document.getElementById("admMultPad").value = config.multipliers.pad;
-  document.getElementById("admMultCombos").value = config.multipliers.combo;
-  document.getElementById("admMultFlush").value = config.multipliers.flushMount || 3.0;
-  document.getElementById("admFlushBaseCost").value = config.flushMountBaseCost || 150;
-  document.getElementById("admDesignRate").value = config.designCostPerSheet;
-  document.getElementById("admNewPin").value = config.adminPin;
-
-  // Populate Image Manager
-  const imgList = document.getElementById("adminImgManagerList");
-  imgList.innerHTML = "";
-  config.covers.forEach(c => {
-    const div = document.createElement("div");
-    div.className = "admin-img-item";
-    div.innerHTML = `
-      <img src="${c.image}" class="admin-img-thumb" id="thumb_${c.id}">
-      <div class="admin-img-controls">
-        <span>${c.name}</span>
-        <div style="display: flex; gap: 6px; margin-top: 4px;">
-          <label class="file-input-btn">
-            📁 Upload From Device
-            <input type="file" accept="image/*" onchange="handleImageUpload('${c.id}', this)">
-          </label>
-        </div>
-        <input type="text" value="${c.image.startsWith('data:') ? '[Uploaded Image File]' : c.image}" 
-               placeholder="Or paste external image URL..." 
-               style="margin-top: 6px; font-size: 11px; padding: 6px;"
-               onchange="updateImageURL('${c.id}', this.value)">
-      </div>
-    `;
-    imgList.appendChild(div);
-  });
-
-  // Sheet table
-  const sheetTbody = document.querySelector("#admSheetTable tbody");
-  sheetTbody.innerHTML = "";
-  config.papers.forEach((p, idx) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><strong>${p.engineName}</strong></td>
-      <td>${p.name}</td>
-      <td><input type="number" value="${p.baseCost}" onchange="updatePaperCost(${idx}, this.value)"></td>
-    `;
-    sheetTbody.appendChild(tr);
-  });
-
-  // Cover table
-  const coverTbody = document.querySelector("#admCoverTable tbody");
-  coverTbody.innerHTML = "";
-  config.covers.filter(c => c.category !== 'none').forEach(c => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><span style="text-transform: capitalize; color: var(--gold);">${c.category}</span></td>
-      <td>${c.name}</td>
-      <td><input type="number" value="${c.baseCost}" onchange="updateCoverCost('${c.id}', this.value)"></td>
-    `;
-    coverTbody.appendChild(tr);
-  });
-
-  document.getElementById("adminModal").classList.add("active");
-}
-
-function handleImageUpload(coverId, input) {
-  if (input.files && input.files[0]) {
-    const file = input.files[0];
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const base64Data = e.target.result;
-      const item = config.covers.find(c => c.id === coverId);
-      if (item) {
-        item.image = base64Data;
-        saveConfig();
-        document.getElementById(`thumb_${coverId}`).src = base64Data;
-        updateCoverVisual();
-      }
-    };
-    reader.readAsDataURL(file);
-  }
-}
-
-function updateImageURL(coverId, url) {
-  if (url === '[Uploaded Image File]' || !url.trim()) return;
-  const item = config.covers.find(c => c.id === coverId);
-  if (item) {
-    item.image = url.trim();
-    saveConfig();
-    document.getElementById(`thumb_${coverId}`).src = url.trim();
-    updateCoverVisual();
-  }
-}
-
-function closeAdminModal() {
-  document.getElementById("adminModal").classList.remove("active");
-  populatePaperOptions();
-  populateCoverDropdown();
-  updateCoverVisual();
-  calculateQuote();
-}
-
-function saveAdminSettings() {
-  config.multipliers.sheet = parseFloat(document.getElementById("admMultSheets").value) || 3.0;
-  config.multipliers.pad = parseFloat(document.getElementById("admMultPad").value) || 3.0;
-  config.multipliers.combo = parseFloat(document.getElementById("admMultCombos").value) || 2.5;
-  config.multipliers.flushMount = parseFloat(document.getElementById("admMultFlush").value) || 3.0;
-  config.flushMountBaseCost = parseInt(document.getElementById("admFlushBaseCost").value, 10) || 150;
-  config.designCostPerSheet = parseInt(document.getElementById("admDesignRate").value, 10) || 40;
-  config.adminPin = document.getElementById("admNewPin").value || "Fire&Ice@321";
-
-  saveConfig();
-  calculateQuote();
-}
-
-function updatePaperCost(index, val) {
-  config.papers[index].baseCost = parseInt(val, 10) || 0;
-  saveConfig();
-}
-
-function updateCoverCost(coverId, val) {
-  const item = config.covers.find(c => c.id === coverId);
-  if (item) {
-    item.baseCost = parseInt(val, 10) || 0;
-    saveConfig();
-  }
-}
-
-function resetDefaults() {
-  if (confirm("Reset all margins, images, and password to defaults?")) {
-    config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
-    saveConfig();
-    openAdminModal();
-    updateCoverVisual();
-  }
-}
-
-initApp();
-</script>
-</body>
-</html>
+      image: "
