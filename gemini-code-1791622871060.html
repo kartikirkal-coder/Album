@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Album Customizer & Quotation</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #111827;
+    --accent: #d97706;
+    --accent-hover: #b45309;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --radius: 14px;
+    --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    padding: 24px 16px 80px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--primary);
+  }
+
+  header p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .admin-trigger-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    transition: all 0.2s;
+  }
+  .admin-trigger-btn:hover { background: #e2e8f0; color: #0f172a; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+  .form-group:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: #334155;
+  }
+
+  select, input[type="number"], input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text-main);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  select:focus, input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+  }
+
+  .counter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .counter-btn {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid var(--border);
+    background: #f8fafc;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .counter-btn:hover { background: #e2e8f0; }
+
+  .checkbox-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .checkbox-pill.active {
+    border-color: var(--accent);
+    background: rgba(217, 119, 6, 0.04);
+  }
+  .checkbox-pill input { display: none; }
+
+  /* Pricing Output Banner */
+  .quote-banner {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 15px 30px -10px rgba(17, 24, 39, 0.3);
+    margin-bottom: 20px;
+  }
+
+  .quote-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .quote-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .total-price {
+    font-size: 38px;
+    font-weight: 800;
+    color: #fbbf24;
+    line-height: 1;
+    margin-top: 6px;
+  }
+
+  .rate-per-sheet-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+
+  .quote-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+  .quote-breakdown-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .action-btns {
+    display: flex;
+    gap: 12px;
+  }
+  .btn {
+    flex: 1;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  .btn-whatsapp {
+    background: #25d366;
+    color: #fff;
+  }
+  .btn-whatsapp:hover { background: #20ba59; }
+
+  /* Admin Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal-card {
+    background: #fff;
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    border-radius: var(--radius);
+    padding: 24px;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+  }
+  .modal-header h2 { font-size: 18px; font-weight: 800; color: var(--primary); }
+  .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  .admin-section {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .admin-sec-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .admin-table th, .admin-table td {
+    padding: 8px 6px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .admin-table input {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+  }
+  .btn-primary:
