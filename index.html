@@ -3,94 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Album Customizer & Quotation</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Print Factor Luxury | Album Customizer & Quotation</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #111827;
-    --accent: #d97706;
-    --accent-hover: #b45309;
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --border: #e2e8f0;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
+    --bg-dark: #121316;
+    --card-bg: #1c1d22;
+    --card-secondary: #23252b;
+    --gold: #d4af37;
+    --gold-light: #f3cf65;
+    --gold-dark: #9e7d23;
+    --gold-glow: rgba(212, 175, 55, 0.2);
+    --border: #2e313a;
+    --border-gold: rgba(212, 175, 55, 0.4);
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
     --radius: 14px;
-    --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    --shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.7);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text-main);
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    background: radial-gradient(circle at 50% 0%, #1e2027 0%, var(--bg-dark) 75%);
+    color: var(--text-primary);
     padding: 24px 16px 80px;
     min-height: 100vh;
+    line-height: 1.5;
   }
 
   .container {
-    max-width: 760px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
+  /* Header */
   header {
     text-align: center;
     margin-bottom: 28px;
     position: relative;
+    padding-bottom: 12px;
+  }
+
+  .brand-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--gold-light);
+    border: 1px solid var(--border-gold);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    background: rgba(212, 175, 55, 0.08);
   }
 
   header h1 {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 800;
-    letter-spacing: -0.5px;
-    color: var(--primary);
+    letter-spacing: -0.3px;
+    background: linear-gradient(135deg, #ffffff 40%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   header p {
     font-size: 14px;
     color: var(--text-muted);
-    margin-top: 4px;
+    margin-top: 6px;
   }
 
   .admin-trigger-btn {
     position: absolute;
     right: 0;
-    top: 0;
-    background: #f1f5f9;
+    top: 4px;
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #475569;
-    transition: all 0.2s;
+    color: var(--gold);
+    transition: all 0.25s ease;
   }
-  .admin-trigger-btn:hover { background: #e2e8f0; color: #0f172a; }
+  .admin-trigger-btn:hover {
+    border-color: var(--gold);
+    background: var(--card-secondary);
+    transform: rotate(45deg);
+  }
 
+  /* Cards */
   .card {
-    background: var(--card);
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 24px;
     box-shadow: var(--shadow);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    position: relative;
   }
 
   .card-title {
     font-size: 16px;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--gold-light);
     margin-bottom: 18px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .card-title span.step-no {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #0e0e11;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
   }
 
   .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
   .form-group:last-child { margin-bottom: 0; }
 
@@ -98,131 +141,181 @@
     display: block;
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 7px;
-    color: #334155;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    letter-spacing: 0.2px;
   }
 
   select, input[type="number"], input[type="password"] {
     width: 100%;
-    padding: 12px 14px;
+    padding: 13px 15px;
     border: 1.5px solid var(--border);
     border-radius: 10px;
     font-size: 14px;
     font-family: inherit;
-    color: var(--text-main);
-    background: #fff;
+    color: #ffffff;
+    background: var(--card-secondary);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  select:focus, input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+    transition: all 0.25s;
   }
 
+  select:focus, input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-glow);
+  }
+
+  /* Counter Wrapper */
   .counter-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
   }
   .counter-btn {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border: 1.5px solid var(--border);
-    background: #f8fafc;
+    background: var(--card-secondary);
+    color: var(--gold);
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     user-select: none;
-    transition: background 0.2s;
+    transition: 0.2s;
   }
-  .counter-btn:hover { background: #e2e8f0; }
+  .counter-btn:hover {
+    border-color: var(--gold);
+    background: #2b2e38;
+  }
 
+  /* Interactive Visual Selection Grid */
+  .preview-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #17181c;
+    overflow: hidden;
+    margin-top: 14px;
+    display: flex;
+    gap: 16px;
+    padding: 12px;
+    align-items: center;
+  }
+  .preview-card img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-gold);
+  }
+  .preview-info {
+    flex: 1;
+  }
+  .preview-info h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+  .preview-info p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .preview-price-tag {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-gold);
+  }
+
+  /* Flush Mount Toggle Pill */
   .checkbox-pill {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px;
+    padding: 16px;
     border: 1.5px solid var(--border);
+    background: var(--card-secondary);
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s;
     user-select: none;
   }
   .checkbox-pill.active {
-    border-color: var(--accent);
-    background: rgba(217, 119, 6, 0.04);
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.08);
   }
   .checkbox-pill input { display: none; }
 
   /* Pricing Output Banner */
   .quote-banner {
-    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    background: linear-gradient(145deg, #1f2127 0%, #15161a 100%);
+    border: 1.5px solid var(--border-gold);
     color: #fff;
     border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: 0 15px 30px -10px rgba(17, 24, 39, 0.3);
-    margin-bottom: 20px;
+    padding: 26px;
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), 0 0 20px var(--gold-glow);
+    margin-bottom: 22px;
   }
 
   .quote-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
     padding-bottom: 16px;
     margin-bottom: 16px;
   }
 
   .quote-label {
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #94a3b8;
-    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    font-weight: 700;
   }
 
   .total-price {
-    font-size: 38px;
+    font-size: 42px;
     font-weight: 800;
-    color: #fbbf24;
-    line-height: 1;
-    margin-top: 6px;
+    color: #f7d568;
+    line-height: 1.1;
+    margin-top: 4px;
   }
 
   .rate-per-sheet-tag {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 6px 12px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--border-gold);
+    padding: 6px 14px;
     border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #e2e8f0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold-light);
   }
 
   .quote-breakdown {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 13px;
-    color: #cbd5e1;
+    gap: 9px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
   }
   .quote-breakdown-row {
     display: flex;
     justify-content: space-between;
   }
 
-  .action-btns {
-    display: flex;
-    gap: 12px;
-  }
+  /* Actions */
   .btn {
     flex: 1;
-    padding: 13px;
+    padding: 15px;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
@@ -231,20 +324,24 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: all 0.2s;
+    transition: all 0.25s;
   }
   .btn-whatsapp {
-    background: #25d366;
+    background: linear-gradient(135deg, #25d366, #128c7e);
     color: #fff;
+    box-shadow: 0 6px 20px -4px rgba(37, 211, 102, 0.4);
   }
-  .btn-whatsapp:hover { background: #20ba59; }
+  .btn-whatsapp:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+  }
 
-  /* Admin Modal */
+  /* Modals */
   .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(4px);
+    background: rgba(5, 6, 8, 0.82);
+    backdrop-filter: blur(6px);
     display: none;
     align-items: center;
     justify-content: center;
@@ -254,14 +351,16 @@
   .modal-overlay.active { display: flex; }
 
   .modal-card {
-    background: #fff;
+    background: #181a1f;
+    border: 1px solid var(--border-gold);
+    color: #fff;
     width: 100%;
-    max-width: 640px;
+    max-width: 680px;
     max-height: 90vh;
     border-radius: var(--radius);
-    padding: 24px;
+    padding: 26px;
     overflow-y: auto;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow);
   }
 
   .modal-header {
@@ -270,589 +369,6 @@
     align-items: center;
     margin-bottom: 20px;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
+    padding-bottom: 14px;
   }
-  .modal-header h2 { font-size: 18px; font-weight: 800; color: var(--primary); }
-  .close-btn {
-    background: transparent;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: var(--text-muted);
-  }
-
-  .admin-section {
-    background: #f8fafc;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 16px;
-  }
-  .admin-sec-title {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .grid-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-  }
-
-  .admin-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-  .admin-table th, .admin-table td {
-    padding: 8px 6px;
-    text-align: left;
-    border-bottom: 1px solid #e2e8f0;
-  }
-  .admin-table input {
-    padding: 6px 8px;
-    font-size: 12px;
-  }
-
-  .btn-primary {
-    background: var(--primary);
-    color: #fff;
-  }
-  .btn-primary:hover { background: #000; }
-  .btn-reset {
-    background: #fee2e2;
-    color: #991b1b;
-  }
-  .btn-reset:hover { background: #fecaca; }
-</style>
-</head>
-<body>
-
-<div class="container">
-  <header>
-    <button class="admin-trigger-btn" onclick="openAdminPrompt()" title="Admin Settings">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-    </button>
-    <h1>Photo Album Studio Quotation</h1>
-    <p>Select your specs to instantly calculate the album price</p>
-  </header>
-
-  <!-- SELECTION FORM -->
-  <div class="card">
-    <div class="card-title">1. Machine & Paper Quality</div>
-    
-    <div class="form-group">
-      <label for="engineSelect">Print Machine Engine</label>
-      <select id="engineSelect" onchange="populatePaperOptions(); calculateQuote();"></select>
-    </div>
-
-    <div class="form-group">
-      <label for="paperSelect">Paper Type & Finish</label>
-      <select id="paperSelect" onchange="calculateQuote();"></select>
-    </div>
-
-    <div class="form-group">
-      <label for="sheetCount">Album Spreads / Sheets (1 Sheet = 2 Pages)</label>
-      <div class="counter-wrapper">
-        <button type="button" class="counter-btn" onclick="adjustSheets(-1)">−</button>
-        <input type="number" id="sheetCount" value="30" min="10" max="100" onchange="calculateQuote();">
-        <button type="button" class="counter-btn" onclick="adjustSheets(1)">+</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">2. Cover Pad, Combos & Finishing</div>
-
-    <div class="form-group">
-      <label for="coverType">Cover Pad / Presentation Combo</label>
-      <select id="coverType" onchange="calculateQuote();"></select>
-    </div>
-
-    <div class="form-group">
-      <label class="checkbox-pill" id="flushMountPill" onclick="toggleFlushMount()">
-        <div>
-          <span style="font-weight: 600; font-size: 14px;">Flush Mount / Precision Rigid Binding</span>
-          <div style="font-size: 12px; color: var(--text-muted);">Seamless edge-to-edge album binding</div>
-        </div>
-        <input type="checkbox" id="flushMountCheck" onchange="calculateQuote()">
-        <span id="flushMountPriceTag" style="font-weight: 700; color: var(--accent);">+₹450</span>
-      </label>
-    </div>
-  </div>
-
-  <!-- LIVE QUOTE BANNER -->
-  <div class="quote-banner">
-    <div class="quote-top">
-      <div>
-        <div class="quote-label">Total Quotation</div>
-        <div class="total-price" id="displayTotal">₹0</div>
-      </div>
-      <div class="rate-per-sheet-tag" id="displayPerSheet">₹0 / sheet</div>
-    </div>
-    
-    <div class="quote-breakdown">
-      <div class="quote-breakdown-row">
-        <span id="summarySheetsTitle">Sheets (30 Spreads / 60 Pages)</span>
-        <span id="summarySheetsPrice">₹0</span>
-      </div>
-      <div class="quote-breakdown-row">
-        <span id="summaryCoverTitle">Cover / Combo</span>
-        <span id="summaryCoverPrice">₹0</span>
-      </div>
-      <div class="quote-breakdown-row" id="summaryBindingRow" style="display: none;">
-        <span>Flush Mount Binding</span>
-        <span id="summaryBindingPrice">₹0</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ACTION BUTTONS -->
-  <div class="action-btns">
-    <button class="btn btn-whatsapp" onclick="shareOnWhatsApp()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.45 7.42 1.341 1.534 1.144.787 1.405.882 1.603.983.197.101.312.087.428-.043.116-.13.491-.572.621-.767.13-.195.26-.163.433-.099.173.064 1.098.518 1.287.612.188.094.314.141.361.221.047.08.047.462-.097.867z"/></svg>
-      Share Quote on WhatsApp
-    </button>
-  </div>
-</div>
-
-<!-- ADMIN PIN MODAL -->
-<div class="modal-overlay" id="pinModal">
-  <div class="modal-card" style="max-width: 360px;">
-    <div class="modal-header">
-      <h2>Admin Access</h2>
-      <button class="close-btn" onclick="closePinModal()">×</button>
-    </div>
-    <div class="form-group">
-      <label for="adminPin">Enter 4-Digit Studio PIN</label>
-      <input type="password" id="adminPin" maxlength="8" placeholder="••••" autofocus onkeydown="if(event.key==='Enter') verifyPin()">
-    </div>
-    <div style="display: flex; gap: 8px; margin-top: 16px;">
-      <button class="btn btn-primary" onclick="verifyPin()">Unlock</button>
-      <button class="btn" style="background: #e2e8f0;" onclick="closePinModal()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN MANAGEMENT MODAL -->
-<div class="modal-overlay" id="adminModal">
-  <div class="modal-card">
-    <div class="modal-header">
-      <h2>Studio Admin & Margins Control</h2>
-      <button class="close-btn" onclick="closeAdminModal()">×</button>
-    </div>
-
-    <!-- MULTIPLIERS -->
-    <div class="admin-section">
-      <div class="admin-sec-title">Independent Markup Multipliers</div>
-      <div class="grid-3">
-        <div class="form-group">
-          <label>Sheets Multiplier</label>
-          <input type="number" step="0.1" id="admMultSheets" onchange="saveAdminSettings()">
-        </div>
-        <div class="form-group">
-          <label>Cover / Pad Multiplier</label>
-          <input type="number" step="0.1" id="admMultPad" onchange="saveAdminSettings()">
-        </div>
-        <div class="form-group">
-          <label>Combos / Boxes Multiplier</label>
-          <input type="number" step="0.1" id="admMultCombos" onchange="saveAdminSettings()">
-        </div>
-      </div>
-      <div class="grid-2" style="margin-top: 10px;">
-        <div class="form-group">
-          <label>Design Rate per Sheet (₹)</label>
-          <input type="number" id="admDesignRate" onchange="saveAdminSettings()">
-        </div>
-        <div class="form-group">
-          <label>Admin Security PIN</label>
-          <input type="password" id="admNewPin" onchange="saveAdminSettings()">
-        </div>
-      </div>
-    </div>
-
-    <!-- BASE SHEET PRINT RATES -->
-    <div class="admin-section">
-      <div class="admin-sec-title">Base Printing Costs (Per Sheet)</div>
-      <table class="admin-table" id="admSheetTable">
-        <thead>
-          <tr>
-            <th>Engine / Category</th>
-            <th>Finish</th>
-            <th style="width: 100px;">Base Cost (₹)</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-
-    <!-- COVERS & COMBOS BASE RATES -->
-    <div class="admin-section">
-      <div class="admin-sec-title">Base Cover & Combo Costs</div>
-      <table class="admin-table" id="admCoverTable">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Item Name</th>
-            <th style="width: 100px;">Base Cost (₹)</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-
-    <div style="display: flex; gap: 10px; margin-top: 20px;">
-      <button class="btn btn-primary" onclick="closeAdminModal()">Done / Apply Changes</button>
-      <button class="btn btn-reset" onclick="resetDefaults()">Reset Factory Rates</button>
-    </div>
-  </div>
-</div>
-
-<script>
-// --- DEFAULT CONFIGURATION & BASE RATES ---
-const DEFAULT_CONFIG = {
-  adminPin: "1234",
-  designCostPerSheet: 40,
-  flushMountBaseCost: 150,
-  
-  // Independent Multipliers
-  multipliers: {
-    sheet: 3.0,
-    pad: 3.0,
-    combo: 2.5,
-    flushMount: 3.0
-  },
-
-  // Base Printing Rates
-  papers: [
-    // Konica Minolta 170µ Tearable
-    { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable)", id: "km_t_gloss", name: "Rich Glossy / Silky Matte", baseCost: 35 },
-    { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable)", id: "km_t_velvet", name: "Velvet / Soft Touch", baseCost: 45 },
-    { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable)", id: "km_t_sparkle", name: "Magic Sparkle / Hologram", baseCost: 110 },
-
-    // Konica Minolta HD Slim 125µ NTR
-    { engineId: "km_slim_ntr", engineName: "Konica Minolta HD Slim (125µ Non-Tearable)", id: "km_s_gloss", name: "Rich Glossy / Silky Matte", baseCost: 40 },
-    { engineId: "km_slim_ntr", engineName: "Konica Minolta HD Slim (125µ Non-Tearable)", id: "km_s_velvet", name: "Velvet / Soft Touch", baseCost: 50 },
-    { engineId: "km_slim_ntr", engineName: "Konica Minolta HD Slim (125µ Non-Tearable)", id: "km_s_metallic", name: "Silver Pearl / Dual Metallic / Sparkle", baseCost: 120 },
-
-    // HP Indigo 7-Color HD Slim 125µ NTR
-    { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ Non-Tearable)", id: "hp_s_gloss", name: "Rich Glossy / Silky Matte", baseCost: 60 },
-    { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ Non-Tearable)", id: "hp_s_velvet", name: "Velvet / Soft Touch", baseCost: 70 },
-    { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ Non-Tearable)", id: "hp_s_metallic", name: "Silver Pearl / Dual Gold Metallic / Sparkle", baseCost: 140 },
-
-    // HP Indigo 7-Color HD Thick 200µ NTR
-    { engineId: "hp_thick_ntr", engineName: "HP Indigo 7-Color (200µ Thick Non-Tearable)", id: "hp_t_gloss", name: "Rich Glossy / Silky Matte", baseCost: 80 },
-    { engineId: "hp_thick_ntr", engineName: "HP Indigo 7-Color (200µ Thick Non-Tearable)", id: "hp_t_velvet", name: "Velvet / Soft Touch", baseCost: 100 },
-    { engineId: "hp_thick_ntr", engineName: "HP Indigo 7-Color (200µ Thick Non-Tearable)", id: "hp_t_pearl", name: "Silver Pearl / Luster", baseCost: 120 },
-    { engineId: "hp_thick_ntr", engineName: "HP Indigo 7-Color (200µ Thick Non-Tearable)", id: "hp_t_sparkle", name: "Magic Sparkle / Holograms", baseCost: 150 }
-  ],
-
-  // Base Cover / Combo Rates
-  covers: [
-    { id: "none", category: "none", name: "No Cover Pad (Raw Bound)", baseCost: 0 },
-    
-    // Regular Cover Pads
-    { id: "pad_3piece", category: "pad", name: "Matt / Sparkle / Velvet 3-Piece Pad", baseCost: 450 },
-    { id: "pad_wrap", category: "pad", name: "Full Wrap Matt / Sparkle Pad", baseCost: 550 },
-    { id: "pad_rexine", category: "pad", name: "Simple Rexine Pad", baseCost: 600 },
-    { id: "pad_nora", category: "pad", name: "Nora UV Printed Rexine Pad", baseCost: 850 },
-    { id: "pad_acrylic", category: "pad", name: "Full Acrylic Glass Pad (Glossy/Metallic)", baseCost: 1100 },
-    { id: "pad_designer", category: "pad", name: "Designer Acrylic Pad (Metallic Print)", baseCost: 1100 },
-    { id: "box_leather", category: "pad", name: "Simple Leather Briefcase Box Only", baseCost: 900 },
-
-    // Luxury Combos
-    { id: "combo_wood", category: "combo", name: "Wooden Crafted Acrylic Combo (Pad + Bag)", baseCost: 1400 },
-    { id: "combo_prime_duo", category: "combo", name: "Prime Duo Set (Full Acrylic Pad + Window Box)", baseCost: 2350 },
-    { id: "combo_3in1", category: "combo", name: "3-in-1 Luxury Combo (Rexine Box + Acrylic Pad + Bag)", baseCost: 2400 },
-    { id: "combo_uv", category: "combo", name: "UV Printed Combo (UV Box + Acrylic Pad + Bag)", baseCost: 2900 },
-    { id: "combo_5in1", category: "combo", name: "5-in-1 Combo (Box + Pad + Mini Book + Calendar + USB)", baseCost: 3400 },
-    { id: "combo_royal_5in1", category: "combo", name: "5-in-1 Royal Acrylic Suite (2 Covers + Luxury Box + Set)", baseCost: 5500 }
-  ]
-};
-
-// State initialization
-let config = JSON.parse(localStorage.getItem('studio_album_pricing_config')) || JSON.parse(JSON.stringify(DEFAULT_CONFIG));
-
-function saveConfig() {
-  localStorage.setItem('studio_album_pricing_config', JSON.stringify(config));
-}
-
-// --- POPULATE DROPDOWNS ---
-function initApp() {
-  populateEngineDropdown();
-  populatePaperOptions();
-  populateCoverDropdown();
-  calculateQuote();
-}
-
-function populateEngineDropdown() {
-  const engineSelect = document.getElementById("engineSelect");
-  engineSelect.innerHTML = "";
-  
-  const engines = [];
-  config.papers.forEach(p => {
-    if (!engines.find(e => e.id === p.engineId)) {
-      engines.push({ id: p.engineId, name: p.engineName });
-    }
-  });
-
-  engines.forEach(e => {
-    const opt = document.createElement("option");
-    opt.value = e.id;
-    opt.textContent = e.name;
-    engineSelect.appendChild(opt);
-  });
-}
-
-function populatePaperOptions() {
-  const engineId = document.getElementById("engineSelect").value;
-  const paperSelect = document.getElementById("paperSelect");
-  paperSelect.innerHTML = "";
-
-  const availablePapers = config.papers.filter(p => p.engineId === engineId);
-  availablePapers.forEach(p => {
-    const opt = document.createElement("option");
-    opt.value = p.id;
-    
-    // Calculate customer rate per sheet
-    const unitCustomerRate = Math.round((p.baseCost + config.designCostPerSheet) * config.multipliers.sheet);
-    opt.textContent = `${p.name} (₹${unitCustomerRate} / sheet)`;
-    paperSelect.appendChild(opt);
-  });
-}
-
-function populateCoverDropdown() {
-  const coverSelect = document.getElementById("coverType");
-  coverSelect.innerHTML = "";
-
-  const padGroup = document.createElement("optgroup");
-  padGroup.label = "Cover Pads";
-
-  const comboGroup = document.createElement("optgroup");
-  comboGroup.label = "Luxury Presentation Combos";
-
-  config.covers.forEach(c => {
-    const opt = document.createElement("option");
-    opt.value = c.id;
-
-    if (c.category === "none") {
-      opt.textContent = c.name;
-      coverSelect.appendChild(opt);
-      return;
-    }
-
-    const mult = c.category === "combo" ? config.multipliers.combo : config.multipliers.pad;
-    const clientPrice = Math.round(c.baseCost * mult);
-    opt.textContent = `${c.name} (+₹${clientPrice.toLocaleString('en-IN')})`;
-
-    if (c.category === "combo") comboGroup.appendChild(opt);
-    else padGroup.appendChild(opt);
-  });
-
-  coverSelect.appendChild(padGroup);
-  coverSelect.appendChild(comboGroup);
-}
-
-// --- CALCULATION LOGIC ---
-function adjustSheets(delta) {
-  const input = document.getElementById("sheetCount");
-  let val = parseInt(input.value, 10) || 30;
-  val = Math.max(10, Math.min(100, val + delta));
-  input.value = val;
-  calculateQuote();
-}
-
-function toggleFlushMount() {
-  const cb = document.getElementById("flushMountCheck");
-  cb.checked = !cb.checked;
-  document.getElementById("flushMountPill").classList.toggle("active", cb.checked);
-  calculateQuote();
-}
-
-function calculateQuote() {
-  const paperId = document.getElementById("paperSelect").value;
-  const paper = config.papers.find(p => p.id === paperId) || config.papers[0];
-  const sheets = parseInt(document.getElementById("sheetCount").value, 10) || 30;
-
-  const coverId = document.getElementById("coverType").value;
-  const cover = config.covers.find(c => c.id === coverId) || config.covers[0];
-
-  const flushMountChecked = document.getElementById("flushMountCheck").checked;
-  document.getElementById("flushMountPill").classList.toggle("active", flushMountChecked);
-
-  // 1. Sheets calculation
-  const sheetBaseRate = paper.baseCost + config.designCostPerSheet;
-  const customerSheetUnitRate = Math.round(sheetBaseRate * config.multipliers.sheet);
-  const totalSheetsPrice = customerSheetUnitRate * sheets;
-
-  // 2. Cover / Combo calculation
-  let totalCoverPrice = 0;
-  if (cover.category === "combo") {
-    totalCoverPrice = Math.round(cover.baseCost * config.multipliers.combo);
-  } else if (cover.category === "pad") {
-    totalCoverPrice = Math.round(cover.baseCost * config.multipliers.pad);
-  }
-
-  // 3. Flush Mount
-  const flushMountCustomerRate = Math.round(config.flushMountBaseCost * config.multipliers.flushMount);
-  document.getElementById("flushMountPriceTag").textContent = `+₹${flushMountCustomerRate}`;
-  const totalBindingPrice = flushMountChecked ? flushMountCustomerRate : 0;
-
-  // Total
-  const finalTotal = totalSheetsPrice + totalCoverPrice + totalBindingPrice;
-
-  // UI Updates
-  document.getElementById("displayTotal").textContent = `₹${finalTotal.toLocaleString('en-IN')}`;
-  document.getElementById("displayPerSheet").textContent = `₹${customerSheetUnitRate} / sheet`;
-
-  document.getElementById("summarySheetsTitle").textContent = `Sheets (${sheets} Spreads / ${sheets * 2} Pages @ ₹${customerSheetUnitRate}/sheet)`;
-  document.getElementById("summarySheetsPrice").textContent = `₹${totalSheetsPrice.toLocaleString('en-IN')}`;
-
-  document.getElementById("summaryCoverTitle").textContent = cover.name;
-  document.getElementById("summaryCoverPrice").textContent = `₹${totalCoverPrice.toLocaleString('en-IN')}`;
-
-  const bindingRow = document.getElementById("summaryBindingRow");
-  if (flushMountChecked) {
-    bindingRow.style.display = "flex";
-    document.getElementById("summaryBindingPrice").textContent = `₹${totalBindingPrice.toLocaleString('en-IN')}`;
-  } else {
-    bindingRow.style.display = "none";
-  }
-}
-
-// --- WHATSAPP SHARE ---
-function shareOnWhatsApp() {
-  const paperId = document.getElementById("paperSelect").value;
-  const paper = config.papers.find(p => p.id === paperId);
-  const sheets = document.getElementById("sheetCount").value;
-  const coverId = document.getElementById("coverType").value;
-  const cover = config.covers.find(c => c.id === coverId);
-  const flushMountChecked = document.getElementById("flushMountCheck").checked;
-  const total = document.getElementById("displayTotal").textContent;
-  const perSheet = document.getElementById("displayPerSheet").textContent;
-
-  let msg = `*📸 PHOTO ALBUM QUOTATION*\n`;
-  msg += `------------------------------------\n`;
-  msg += `• *Machine / Paper:* ${paper.name}\n`;
-  msg += `• *Album Size:* 18×36 (or 12×36 Panoramic)\n`;
-  msg += `• *Spreads:* ${sheets} Sheets (${sheets * 2} Pages)\n`;
-  msg += `• *Per Sheet Rate:* ${perSheet}\n`;
-  msg += `• *Cover / Box:* ${cover.name}\n`;
-  if (flushMountChecked) msg += `• *Binding:* Flush Mount Rigid Binding Included\n`;
-  msg += `------------------------------------\n`;
-  msg += `*ESTIMATED TOTAL:* ${total}\n`;
-  msg += `*(Includes Album Layout Design & Precision Printing)*`;
-
-  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-// --- ADMIN PORTAL LOGIC ---
-function openAdminPrompt() {
-  document.getElementById("pinModal").classList.add("active");
-  document.getElementById("adminPin").value = "";
-  document.getElementById("adminPin").focus();
-}
-
-function closePinModal() {
-  document.getElementById("pinModal").classList.remove("active");
-}
-
-function verifyPin() {
-  const enteredPin = document.getElementById("adminPin").value;
-  if (enteredPin === config.adminPin) {
-    closePinModal();
-    openAdminModal();
-  } else {
-    alert("Incorrect Admin PIN");
-    document.getElementById("adminPin").value = "";
-  }
-}
-
-function openAdminModal() {
-  document.getElementById("admMultSheets").value = config.multipliers.sheet;
-  document.getElementById("admMultPad").value = config.multipliers.pad;
-  document.getElementById("admMultCombos").value = config.multipliers.combo;
-  document.getElementById("admDesignRate").value = config.designCostPerSheet;
-  document.getElementById("admNewPin").value = config.adminPin;
-
-  // Render Sheet Base Costs Table
-  const sheetTbody = document.querySelector("#admSheetTable tbody");
-  sheetTbody.innerHTML = "";
-  config.papers.forEach((p, idx) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><strong>${p.engineName}</strong></td>
-      <td>${p.name}</td>
-      <td><input type="number" value="${p.baseCost}" onchange="updatePaperCost(${idx}, this.value)"></td>
-    `;
-    sheetTbody.appendChild(tr);
-  });
-
-  // Render Cover Base Costs Table
-  const coverTbody = document.querySelector("#admCoverTable tbody");
-  coverTbody.innerHTML = "";
-  config.covers.filter(c => c.category !== 'none').forEach((c, idx) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><span style="text-transform: capitalize; font-weight:600;">${c.category}</span></td>
-      <td>${c.name}</td>
-      <td><input type="number" value="${c.baseCost}" onchange="updateCoverCost('${c.id}', this.value)"></td>
-    `;
-    coverTbody.appendChild(tr);
-  });
-
-  document.getElementById("adminModal").classList.add("active");
-}
-
-function closeAdminModal() {
-  document.getElementById("adminModal").classList.remove("active");
-  populatePaperOptions();
-  populateCoverDropdown();
-  calculateQuote();
-}
-
-function saveAdminSettings() {
-  config.multipliers.sheet = parseFloat(document.getElementById("admMultSheets").value) || 3.0;
-  config.multipliers.pad = parseFloat(document.getElementById("admMultPad").value) || 3.0;
-  config.multipliers.combo = parseFloat(document.getElementById("admMultCombos").value) || 2.5;
-  config.designCostPerSheet = parseInt(document.getElementById("admDesignRate").value, 10) || 40;
-  config.adminPin = document.getElementById("admNewPin").value || "1234";
-
-  saveConfig();
-}
-
-function updatePaperCost(index, val) {
-  config.papers[index].baseCost = parseInt(val, 10) || 0;
-  saveConfig();
-}
-
-function updateCoverCost(coverId, val) {
-  const item = config.covers.find(c => c.id === coverId);
-  if (item) {
-    item.baseCost = parseInt(val, 10) || 0;
-    saveConfig();
-  }
-}
-
-function resetDefaults() {
-  if (confirm("Reset all margins and base costs back to catalog default rates?")) {
-    config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
-    saveConfig();
-    openAdminModal();
-  }
-}
-
-// Start
-initApp();
-</script>
-</body>
-</html>
+  .modal-header h2 { font-size: 19px; font
