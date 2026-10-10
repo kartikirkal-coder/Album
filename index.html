@@ -74,7 +74,6 @@
     margin-top: 4px;
   }
 
-  /* Discreet Admin Button */
   .admin-trigger-btn {
     position: absolute;
     right: 0;
@@ -88,7 +87,7 @@
     align-items: center;
     justify-content: center;
     color: #4b5563;
-    opacity: 0.18;
+    opacity: 0.2;
     transition: all 0.3s ease;
   }
   .admin-trigger-btn:hover, .admin-trigger-btn:active {
@@ -545,7 +544,7 @@
       <select id="coverType" onchange="calculateQuote(); updateCoverVisual();"></select>
     </div>
 
-    <!-- Presentation Visual Showcase for Customers -->
+    <!-- Presentation Visual Showcase -->
     <div class="preview-card" id="coverPreviewBox">
       <div class="preview-image-container" onclick="zoomCurrentImage()">
         <img id="coverPreviewImg" src="" alt="Album Cover Preview">
@@ -739,7 +738,7 @@ const DEFAULT_CONFIG = {
   },
 
   papers: [
-    // 1. Konica Minolta Accurio 125µ HD Slim Non-Tearable
+    // 1. Konica Minolta Accurio 125µ HD Slim Non-Tearable[cite: 5]
     { engineId: "km_slim_ntr", engineName: "Konica Minolta Accurio (125µ HD Slim Non-Tearable)", id: "km_s_gloss", name: "Rich Glossy", baseCost: 40 },
     { engineId: "km_slim_ntr", engineName: "Konica Minolta Accurio (125µ HD Slim Non-Tearable)", id: "km_s_matte", name: "Silky Matte", baseCost: 40 },
     { engineId: "km_slim_ntr", engineName: "Konica Minolta Accurio (125µ HD Slim Non-Tearable)", id: "km_s_velvet", name: "Velvet / Soft Touch", baseCost: 50 },
@@ -751,14 +750,14 @@ const DEFAULT_CONFIG = {
     { engineId: "km_slim_ntr", engineName: "Konica Minolta Accurio (125µ HD Slim Non-Tearable)", id: "km_s_emboss250", name: "Emboss Magic Touch (Standard)", baseCost: 250 },
     { engineId: "km_slim_ntr", engineName: "Konica Minolta Accurio (125µ HD Slim Non-Tearable)", id: "km_s_emboss350", name: "Emboss Magic Touch (Premium Heavy)", baseCost: 350 },
 
-    // 2. Konica Minolta 170µ Tearable Series
+    // 2. Konica Minolta 170µ Tearable Series[cite: 5]
     { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable Series)", id: "km_t_gloss", name: "Rich Glossy", baseCost: 35 },
     { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable Series)", id: "km_t_matte", name: "Silky Matte", baseCost: 35 },
     { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable Series)", id: "km_t_velvet", name: "Velvet / Soft Touch", baseCost: 45 },
     { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable Series)", id: "km_t_sparkle", name: "Magic Sparkle", baseCost: 110 },
     { engineId: "km_tearable", engineName: "Konica Minolta (170µ Tearable Series)", id: "km_t_hologram", name: "Holograms", baseCost: 110 },
 
-    // 3. HP Indigo 7-Color 125µ HD Slim Non-Tearable
+    // 3. HP Indigo 7-Color 125µ HD Slim Non-Tearable[cite: 4]
     { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ HD Slim Non-Tearable)", id: "hp_s_gloss", name: "Rich Glossy", baseCost: 60 },
     { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ HD Slim Non-Tearable)", id: "hp_s_matte", name: "Silky Matte", baseCost: 60 },
     { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ HD Slim Non-Tearable)", id: "hp_s_velvet", name: "Velvet / Soft Touch", baseCost: 70 },
@@ -770,7 +769,7 @@ const DEFAULT_CONFIG = {
     { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ HD Slim Non-Tearable)", id: "hp_s_emboss250", name: "Emboss Magic Touch (Standard)", baseCost: 250 },
     { engineId: "hp_slim_ntr", engineName: "HP Indigo 7-Color (125µ HD Slim Non-Tearable)", id: "hp_s_emboss350", name: "Emboss Magic Touch (Premium Heavy)", baseCost: 350 },
 
-    // 4. HP Indigo 7-Color 200µ HD Thick Non-Tearable
+    // 4. HP Indigo 7-Color 200µ HD Thick Non-Tearable[cite: 4]
     { engineId: "hp_thick_ntr", engineName: "HP Indigo 7-Color (200µ HD Thick Non-Tearable)", id: "hp_t_gloss", name: "Rich Glossy", baseCost: 80 },
     { engineId: "hp_thick_ntr", engineName: "HP Indigo 7-Color (200µ HD Thick Non-Tearable)", id: "hp_t_matte", name: "Silky Matte", baseCost: 80 },
     { engineId: "hp_thick_ntr", engineName: "HP Indigo 7-Color (200µ HD Thick Non-Tearable)", id: "hp_t_velvet", name: "Velvet / Soft Touch", baseCost: 100 },
@@ -788,7 +787,7 @@ const DEFAULT_CONFIG = {
       name: "Raw Bound (No External Pad)", 
       desc: "Standard album bound without accessory presentation pad",
       baseCost: 0,
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80"
     },
     { 
       id: "pad_matt_3piece", 
@@ -796,7 +795,7 @@ const DEFAULT_CONFIG = {
       name: "Matt 3-Piece Cover Pad", 
       desc: "Three-piece album protection pad in smooth matt finish",
       baseCost: 450,
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80"
     },
     { 
       id: "pad_sparkle_3piece", 
@@ -804,7 +803,7 @@ const DEFAULT_CONFIG = {
       name: "Sparkle 3-Piece Cover Pad", 
       desc: "Three-piece album protection pad in glistening sparkle finish",
       baseCost: 450,
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80"
     },
     { 
       id: "pad_velvet_3piece", 
@@ -812,7 +811,7 @@ const DEFAULT_CONFIG = {
       name: "Velvet 3-Piece Cover Pad", 
       desc: "Three-piece album protection pad in soft velvet finish",
       baseCost: 450,
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80"
     },
     { 
       id: "pad_wrap", 
@@ -820,7 +819,7 @@ const DEFAULT_CONFIG = {
       name: "Full Wrap Matt / Sparkle Pad", 
       desc: "Full wrap-around edge binding in premium matt or sparkle",
       baseCost: 550,
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80"
     },
     { 
       id: "pad_rexine", 
@@ -828,7 +827,7 @@ const DEFAULT_CONFIG = {
       name: "Simple Rexine Pad", 
       desc: "Durable classic leatherette rexine pad",
       baseCost: 600,
-      image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80"
     },
     { 
       id: "pad_nora", 
@@ -836,7 +835,7 @@ const DEFAULT_CONFIG = {
       name: "Nora UV Printed Rexine Pad", 
       desc: "Artistic UV Printed Rexine cover pad with window photo & motifs",
       baseCost: 850,
-      image: "https://images.unsplash.com/photo-1607344645866-009c320b5ab8?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1607344645866-009c320b5ab8?w=800&q=80"
     },
     { 
       id: "pad_acrylic_gloss", 
@@ -844,7 +843,7 @@ const DEFAULT_CONFIG = {
       name: "Full Acrylic Pad (Glossy Print)", 
       desc: "High gloss acrylic glass album front sheet",
       baseCost: 1100,
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80"
     },
     { 
       id: "pad_acrylic_met", 
@@ -852,7 +851,7 @@ const DEFAULT_CONFIG = {
       name: "Full Acrylic Pad (Metallic Print)", 
       desc: "High depth metallic print under crystal acrylic front",
       baseCost: 1100,
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80"
     },
     { 
       id: "pad_designer_met", 
@@ -860,7 +859,7 @@ const DEFAULT_CONFIG = {
       name: "Designer Cover (Metallic Print)", 
       desc: "Designer artistic border with metallic print finish",
       baseCost: 1100,
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80"
     },
     { 
       id: "box_leather", 
@@ -868,7 +867,7 @@ const DEFAULT_CONFIG = {
       name: "Simple Leather Briefcase Box", 
       desc: "Solid leatherette suitcase box with photo window & handle",
       baseCost: 900,
-      image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80"
     },
     { 
       id: "combo_wood", 
@@ -876,7 +875,7 @@ const DEFAULT_CONFIG = {
       name: "Wooden Crafted Acrylic Combo", 
       desc: "Wood art laser cut acrylic pad + tailor finished resin bag",
       baseCost: 1400,
-      image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&q=80"
     },
     { 
       id: "combo_prime_duo", 
@@ -884,7 +883,7 @@ const DEFAULT_CONFIG = {
       name: "Prime Duo Set", 
       desc: "Full acrylic pad + crystal acrylic window box & bag",
       baseCost: 2350,
-      image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1000&q=80"
+      image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&q=80"
     },
     { 
       id: "combo_3in1", 
@@ -892,4 +891,445 @@ const DEFAULT_CONFIG = {
       name: "3-in-1 Luxury Combo Set", 
       desc: "Custom rexine box + acrylic designer cover + rexine bag",
       baseCost: 2400,
-      image: "
+      image: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80"
+    },
+    { 
+      id: "combo_uv", 
+      category: "combo", 
+      name: "UV Printed Acrylic Box Combo", 
+      desc: "Floral UV acrylic window box + acrylic cover + bag",
+      baseCost: 2900,
+      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80"
+    },
+    { 
+      id: "combo_5in1", 
+      category: "combo", 
+      name: "5-in-1 Showcase Presentation Combo", 
+      desc: "Rexine box + acrylic cover + mini book + calendar + USB case",
+      baseCost: 3400,
+      image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&q=80"
+    },
+    { 
+      id: "combo_royal_5in1", 
+      category: "combo", 
+      name: "5-in-1 Royal Acrylic Suite", 
+      desc: "Dual tone luxury box + 2 covers + mini book + calendar + USB case",
+      baseCost: 5500,
+      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80"
+    }
+  ]
+};
+
+// Safe storage initialization preventing any parse or quota crashes
+const STORAGE_KEY = 'cbvisuals_album_v6';
+let config;
+
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    config = JSON.parse(saved);
+    // Ensure all critical properties exist
+    if (!config.multipliers || !config.papers || !config.covers) {
+      throw new Error("Corrupted storage structure");
+    }
+  } else {
+    config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+  }
+} catch (e) {
+  console.warn("Storage reset triggered:", e);
+  config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(config)); } catch(err){}
+}
+
+function saveConfig() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+  } catch (err) {
+    alert("Warning: Local storage limit reached. Please use image links instead of large photos.");
+  }
+}
+
+function initApp() {
+  populateEngineDropdown();
+  populatePaperOptions();
+  populateCoverDropdown();
+  updateCoverVisual();
+  calculateQuote();
+}
+
+function populateEngineDropdown() {
+  const engineSelect = document.getElementById("engineSelect");
+  const curVal = engineSelect.value;
+  engineSelect.innerHTML = "";
+  
+  const engines = [];
+  config.papers.forEach(p => {
+    if (!engines.find(e => e.id === p.engineId)) {
+      engines.push({ id: p.engineId, name: p.engineName });
+    }
+  });
+
+  engines.forEach(e => {
+    const opt = document.createElement("option");
+    opt.value = e.id;
+    opt.textContent = e.name;
+    engineSelect.appendChild(opt);
+  });
+  if (curVal && engines.some(e => e.id === curVal)) {
+    engineSelect.value = curVal;
+  }
+}
+
+function populatePaperOptions() {
+  const engineId = document.getElementById("engineSelect").value;
+  const paperSelect = document.getElementById("paperSelect");
+  const curVal = paperSelect.value;
+  paperSelect.innerHTML = "";
+
+  const availablePapers = config.papers.filter(p => p.engineId === engineId);
+  availablePapers.forEach(p => {
+    const opt = document.createElement("option");
+    opt.value = p.id;
+    const unitRate = Math.round((p.baseCost + config.designCostPerSheet) * config.multipliers.sheet);
+    opt.textContent = `${p.name} (₹${unitRate} / sheet)`;
+    paperSelect.appendChild(opt);
+  });
+
+  if (curVal && availablePapers.some(p => p.id === curVal)) {
+    paperSelect.value = curVal;
+  }
+}
+
+function populateCoverDropdown() {
+  const coverSelect = document.getElementById("coverType");
+  const curVal = coverSelect.value;
+  coverSelect.innerHTML = "";
+
+  const padGroup = document.createElement("optgroup");
+  padGroup.label = "Cover Pads & Briefcases";
+
+  const comboGroup = document.createElement("optgroup");
+  comboGroup.label = "Luxury Presentation Combos";
+
+  config.covers.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c.id;
+
+    if (c.category === "none") {
+      opt.textContent = c.name;
+      coverSelect.appendChild(opt);
+      return;
+    }
+
+    const mult = c.category === "combo" ? config.multipliers.combo : config.multipliers.pad;
+    const clientPrice = Math.round(c.baseCost * mult);
+    opt.textContent = `${c.name} (+₹${clientPrice.toLocaleString('en-IN')})`;
+
+    if (c.category === "combo") comboGroup.appendChild(opt);
+    else padGroup.appendChild(opt);
+  });
+
+  coverSelect.appendChild(padGroup);
+  coverSelect.appendChild(comboGroup);
+  if (curVal) coverSelect.value = curVal;
+}
+
+function updateCoverVisual() {
+  const coverId = document.getElementById("coverType").value;
+  const cover = config.covers.find(c => c.id === coverId) || config.covers[0];
+
+  const mult = cover.category === "combo" ? config.multipliers.combo : config.multipliers.pad;
+  const price = cover.category === "none" ? 0 : Math.round(cover.baseCost * mult);
+
+  document.getElementById("coverPreviewImg").src = cover.image;
+  document.getElementById("coverPreviewName").textContent = cover.name;
+  document.getElementById("coverPreviewDesc").textContent = cover.desc;
+  document.getElementById("coverPreviewPrice").textContent = price > 0 ? `+₹${price.toLocaleString('en-IN')}` : "Included";
+}
+
+function zoomCurrentImage() {
+  const src = document.getElementById("coverPreviewImg").src;
+  document.getElementById("modalEnlargedImg").src = src;
+  document.getElementById("zoomModal").classList.add("active");
+}
+
+function closeZoomModal() {
+  document.getElementById("zoomModal").classList.remove("active");
+}
+
+function adjustSheets(delta) {
+  const input = document.getElementById("sheetCount");
+  let val = parseInt(input.value, 10) || 30;
+  val = Math.max(10, Math.min(100, val + delta));
+  input.value = val;
+  calculateQuote();
+}
+
+function toggleFlushMount() {
+  const cb = document.getElementById("flushMountCheck");
+  cb.checked = !cb.checked;
+  document.getElementById("flushMountPill").classList.toggle("active", cb.checked);
+  calculateQuote();
+}
+
+function calculateQuote() {
+  const paperId = document.getElementById("paperSelect").value;
+  const paper = config.papers.find(p => p.id === paperId) || config.papers[0];
+  const sheets = parseInt(document.getElementById("sheetCount").value, 10) || 30;
+
+  const coverId = document.getElementById("coverType").value;
+  const cover = config.covers.find(c => c.id === coverId) || config.covers[0];
+
+  const flushMountChecked = document.getElementById("flushMountCheck").checked;
+  document.getElementById("flushMountPill").classList.toggle("active", flushMountChecked);
+
+  // 1. Sheets calculation
+  const sheetBaseRate = paper.baseCost + config.designCostPerSheet;
+  const customerSheetUnitRate = Math.round(sheetBaseRate * config.multipliers.sheet);
+  const totalSheetsPrice = customerSheetUnitRate * sheets;
+
+  // 2. Cover / Combo calculation
+  let totalCoverPrice = 0;
+  if (cover.category === "combo") {
+    totalCoverPrice = Math.round(cover.baseCost * config.multipliers.combo);
+  } else if (cover.category === "pad") {
+    totalCoverPrice = Math.round(cover.baseCost * config.multipliers.pad);
+  }
+
+  // 3. Flush Mount
+  const flushMountCustomerRate = Math.round(config.flushMountBaseCost * config.multipliers.flushMount);
+  document.getElementById("flushMountPriceTag").textContent = `+₹${flushMountCustomerRate.toLocaleString('en-IN')}`;
+  const totalBindingPrice = flushMountChecked ? flushMountCustomerRate : 0;
+
+  // Total
+  const finalTotal = totalSheetsPrice + totalCoverPrice + totalBindingPrice;
+
+  // UI updates
+  document.getElementById("displayTotal").textContent = `₹${finalTotal.toLocaleString('en-IN')}`;
+  document.getElementById("displayPerSheet").textContent = `₹${customerSheetUnitRate} / sheet`;
+
+  document.getElementById("summarySheetsTitle").textContent = `${sheets} Sheets`;
+  document.getElementById("summarySheetsPrice").textContent = `₹${totalSheetsPrice.toLocaleString('en-IN')}`;
+
+  document.getElementById("summaryCoverTitle").textContent = cover.name;
+  document.getElementById("summaryCoverPrice").textContent = `₹${totalCoverPrice.toLocaleString('en-IN')}`;
+
+  const bindingRow = document.getElementById("summaryBindingRow");
+  if (flushMountChecked) {
+    bindingRow.style.display = "flex";
+    document.getElementById("summaryBindingPrice").textContent = `₹${totalBindingPrice.toLocaleString('en-IN')}`;
+  } else {
+    bindingRow.style.display = "none";
+  }
+}
+
+// WhatsApp Share
+function shareOnWhatsApp() {
+  const paperId = document.getElementById("paperSelect").value;
+  const paper = config.papers.find(p => p.id === paperId);
+  const sheets = document.getElementById("sheetCount").value;
+  const coverId = document.getElementById("coverType").value;
+  const cover = config.covers.find(c => c.id === coverId);
+  const flushMountChecked = document.getElementById("flushMountCheck").checked;
+  const total = document.getElementById("displayTotal").textContent;
+  const perSheet = document.getElementById("displayPerSheet").textContent;
+
+  let msg = `*📸 CB VISUALS PHOTOGRAPHY*\n`;
+  msg += `_Album Collections Quotation_\n`;
+  msg += `------------------------------------\n`;
+  msg += `• *Paper & Finish:* ${paper.name}\n`;
+  msg += `• *Sheets:* ${sheets} Sheets\n`;
+  msg += `• *Per Sheet Rate:* ${perSheet}\n`;
+  msg += `• *Cover / Presentation:* ${cover.name}\n`;
+  if (flushMountChecked) msg += `• *Binding:* Seamless Flush Mount Rigid Included\n`;
+  msg += `------------------------------------\n`;
+  msg += `*ESTIMATED TOTAL:* ${total}\n`;
+  msg += `*(Includes Custom Layout Design, Printing & Presentation)*`;
+
+  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// PIN & Admin Handlers
+function openPinModal() {
+  document.getElementById("pinModal").classList.add("active");
+  document.getElementById("adminPin").value = "";
+  document.getElementById("adminPin").focus();
+}
+
+function closePinModal() {
+  document.getElementById("pinModal").classList.remove("active");
+}
+
+function verifyPin() {
+  const entered = document.getElementById("adminPin").value;
+  if (entered === config.adminPin) {
+    closePinModal();
+    openAdminModal();
+  } else {
+    alert("Incorrect password. Please verify your credentials.");
+    document.getElementById("adminPin").value = "";
+  }
+}
+
+function openAdminModal() {
+  document.getElementById("admMultSheets").value = config.multipliers.sheet;
+  document.getElementById("admMultPad").value = config.multipliers.pad;
+  document.getElementById("admMultCombos").value = config.multipliers.combo;
+  document.getElementById("admMultFlush").value = config.multipliers.flushMount || 3.0;
+  document.getElementById("admFlushBaseCost").value = config.flushMountBaseCost || 150;
+  document.getElementById("admDesignRate").value = config.designCostPerSheet;
+  document.getElementById("admNewPin").value = config.adminPin;
+
+  // Populate Image Manager
+  const imgList = document.getElementById("adminImgManagerList");
+  imgList.innerHTML = "";
+  config.covers.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "admin-img-item";
+    div.innerHTML = `
+      <img src="${c.image}" class="admin-img-thumb" id="thumb_${c.id}">
+      <div class="admin-img-controls">
+        <span>${c.name}</span>
+        <div style="display: flex; gap: 6px; margin-top: 4px;">
+          <label class="file-input-btn">
+            📁 Upload From Device
+            <input type="file" accept="image/*" onchange="handleImageUpload('${c.id}', this)">
+          </label>
+        </div>
+        <input type="text" value="${c.image.startsWith('data:') ? '[Uploaded Image File]' : c.image}" 
+               placeholder="Or paste external image URL..." 
+               style="margin-top: 6px; font-size: 11px; padding: 6px;"
+               onchange="updateImageURL('${c.id}', this.value)">
+      </div>
+    `;
+    imgList.appendChild(div);
+  });
+
+  // Sheet table
+  const sheetTbody = document.querySelector("#admSheetTable tbody");
+  sheetTbody.innerHTML = "";
+  config.papers.forEach((p, idx) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><strong>${p.engineName}</strong></td>
+      <td>${p.name}</td>
+      <td><input type="number" value="${p.baseCost}" onchange="updatePaperCost(${idx}, this.value)"></td>
+    `;
+    sheetTbody.appendChild(tr);
+  });
+
+  // Cover table
+  const coverTbody = document.querySelector("#admCoverTable tbody");
+  coverTbody.innerHTML = "";
+  config.covers.filter(c => c.category !== 'none').forEach(c => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span style="text-transform: capitalize; color: var(--gold);">${c.category}</span></td>
+      <td>${c.name}</td>
+      <td><input type="number" value="${c.baseCost}" onchange="updateCoverCost('${c.id}', this.value)"></td>
+    `;
+    coverTbody.appendChild(tr);
+  });
+
+  document.getElementById("adminModal").classList.add("active");
+}
+
+// Automatic high-speed image compression to never exceed localStorage limits
+function handleImageUpload(coverId, input) {
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement("canvas");
+        const maxDim = 800;
+        let w = img.width;
+        let h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, w, h);
+        
+        // Compact JPEG data url (~40KB)
+        const compressedBase64 = canvas.toDataURL("image/jpeg", 0.75);
+        const item = config.covers.find(c => c.id === coverId);
+        if (item) {
+          item.image = compressedBase64;
+          saveConfig();
+          const thumb = document.getElementById(`thumb_${coverId}`);
+          if (thumb) thumb.src = compressedBase64;
+          updateCoverVisual();
+        }
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function updateImageURL(coverId, url) {
+  if (url === '[Uploaded Image File]' || !url.trim()) return;
+  const item = config.covers.find(c => c.id === coverId);
+  if (item) {
+    item.image = url.trim();
+    saveConfig();
+    const thumb = document.getElementById(`thumb_${coverId}`);
+    if (thumb) thumb.src = url.trim();
+    updateCoverVisual();
+  }
+}
+
+function updatePaperCost(index, val) {
+  config.papers[index].baseCost = parseInt(val, 10) || 0;
+  saveConfig();
+}
+
+function updateCoverCost(coverId, val) {
+  const item = config.covers.find(c => c.id === coverId);
+  if (item) {
+    item.baseCost = parseInt(val, 10) || 0;
+    saveConfig();
+  }
+}
+
+function closeAdminModal() {
+  config.multipliers.sheet = parseFloat(document.getElementById("admMultSheets").value) || 3.0;
+  config.multipliers.pad = parseFloat(document.getElementById("admMultPad").value) || 3.0;
+  config.multipliers.combo = parseFloat(document.getElementById("admMultCombos").value) || 2.5;
+  config.multipliers.flushMount = parseFloat(document.getElementById("admMultFlush").value) || 3.0;
+  config.flushMountBaseCost = parseInt(document.getElementById("admFlushBaseCost").value, 10) || 150;
+  config.designCostPerSheet = parseInt(document.getElementById("admDesignRate").value, 10) || 40;
+  config.adminPin = document.getElementById("admNewPin").value || "Fire&Ice@321";
+
+  saveConfig();
+
+  document.getElementById("adminModal").classList.remove("active");
+  populatePaperOptions();
+  populateCoverDropdown();
+  updateCoverVisual();
+  calculateQuote();
+}
+
+function resetDefaults() {
+  if (confirm("Reset all margins, images, and password to defaults?")) {
+    config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+    saveConfig();
+    openAdminModal();
+    updateCoverVisual();
+  }
+}
+
+initApp();
+</script>
+</body>
+</html>
